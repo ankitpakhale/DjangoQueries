@@ -5,8 +5,6 @@ from .models import *
 # Create your views here.
 
 def index(request):
-    
-
     # To save data in Entry table 
     a = '/home/user5/Documents/ank10/makingQueries/queries1.csv'
     with open(a, 'r') as f:
@@ -27,5 +25,5 @@ def index(request):
                 e.save()
             else:
                 print("data is already there in db!!",l[0])                  
-    return render(request, 'index.html')
-    # return HttpResponse("Hello, world. You're at the polls index.")
+    # return render(request, 'index.html')
+    return HttpResponse("Hello, world. You're at the polls index.")
