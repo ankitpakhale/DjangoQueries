@@ -55,7 +55,7 @@ ROOT_URLCONF = 'djq.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/home/user5/Documents/ank10/makingQueries/djq/polls/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
