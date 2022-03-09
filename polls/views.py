@@ -12,6 +12,7 @@ def index(request):
         for i in s[1:]:
             l=i.split(',')
             qw = Entry.objects.filter(blog = l[0])
+            
             if not qw:
                 e = Entry()
                 e.blog=Blog.objects.get(id=l[0])
@@ -24,6 +25,7 @@ def index(request):
                 e.rating=l[7][0]
                 e.save()
             else:
-                print("data is already there in db!!",l[0])                  
+                print("data is already there in db!!",l[0])      
+
     # return render(request, 'index.html')
     return HttpResponse("Hello, world. You're at the polls index.")
