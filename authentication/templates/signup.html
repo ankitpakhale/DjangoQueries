@@ -38,39 +38,43 @@
             background-color: #5F7464; */
         }
 
+        .main {
+            background-color: #FFFFFF;
+            width: 400px;
+            height: auto;
+            padding: 6px 13px;
+            margin: 7em auto;
+            border-radius: 1rem;
+
+            /* width: 22rem;
+            height: auto; */
+
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .sign {
+            padding-top: 40px;
+            color: #002153;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: bold;
+            font-size: 23px;
+        }
+
         .verticalForm {
             display: flex;
             flex-direction: column;
             margin: 5px 10px;
             padding: 30px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            background-color: #ffffff;
-            border-radius: 10px;
             position: relative;
-            width: 22rem;
-            height: auto;
         }
-
-        /* .verticalForm .type-field {
-            outline: none;
-            border: none;
-            border-radius: 6px;
-            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-            margin: 5px 10px;
-            padding: 10px 20px;
-            width: 18rem;
-            font-size: 18px;
-        }  */
-
-        /* angelina code start */
-
         .verticalForm .form__input {
             /* position: absolute;  */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 2px solid gray;
+            /* border: 2px solid gray; */
+            border: none;
             border-radius: 0.5rem;
             font-family: inherit;
             font-size: inherit;
@@ -81,13 +85,13 @@
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
         }
 
-        .verticalForm .form__input:hover {
+        /* .verticalForm .form__input:hover {
             border-color: #f80000;
         }
 
         .verticalForm .form__input:focus {
             border-color: #1900a8;
-        }
+        } */
 
         .verticalForm .form__label {
             position: relative;
@@ -111,55 +115,84 @@
 
         }
 
-        /* angelina code end */
+        .type-2 {
+            border-radius: 6px;
+            background-color: #A5A2D4;
+            border: 0;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            transition: .3s box-shadow;
+            padding: 7px 13px;
+            margin: 10px auto;
+            display: block;
+            width: auto;
+            font-size: 16px;
+            font-weight: 550;
+            transition: all 0.5s ease;
+        }
+
+        .type-2:hover {
+            transition: all 0.5s ease;
+            box-shadow: 5px 5px 5px #D8DDFE;
+            /* border: 1px solid #A5A2D4; */
+        }
+
+        .verticalForm .required {
+            font-size: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
 
-        <form method="POST" class="verticalForm">
-            {% csrf_token %}
-            <!-- 
+        <div class="main">
+
+            <p class="sign" align="center">Universal Signup</p>
+
+            <form method="POST" class="verticalForm">
+                {% csrf_token %}
+                <!-- 
             <input type="text" id="email" class="form__input" required="required" autocomplete="off" placeholder=" ">
             <label for="email" class="form__label">*Email</label> -->
 
-            <input class="form__input" type="text" name="name" id="name" required="required" autocomplete="off"
-                placeholder=" ">
-            <label class="form__label" for="name">*Name</label>
+                <input class="form__input" type="text" name="name" id="name" required="required" autocomplete="off"
+                    placeholder=" ">
+                <label class="form__label" for="name">*Name</label>
 
-            <input class="form__input" id="email" type="text" name="email" required="required" autocomplete="off"
-                placeholder=" ">
-            <label class="form__label" for="email">*Email</label>
+                <input class="form__input" id="email" type="text" name="email" required="required" autocomplete="off"
+                    placeholder=" ">
+                <label class="form__label" for="email">*Email</label>
 
-            <input class="form__input" type="number" id="number" name="number" required="required" autocomplete="off"
-                placeholder=" ">
-            <label class="form__label" for="number">*Phone</label>
+                <input class="form__input" type="number" id="number" name="number" required="required"
+                    autocomplete="off" placeholder=" ">
+                <label class="form__label" for="number">*Phone</label>
 
-            <input class="form__input" type="text" id="address" name="address" required="required" autocomplete="off"
-                placeholder=" ">
-            <label class="form__label" for="address">*Address</label>
+                <input class="form__input" type="text" id="address" name="address" required="required"
+                    autocomplete="off" placeholder=" ">
+                <label class="form__label" for="address">*Address</label>
 
-            <input class="form__input" type="password" id="password" name="password" required="required"
-                autocomplete="off" placeholder=" ">
-            <label class="form__label" for="password">*Password</label>
+                <input class="form__input" type="password" id="password" name="password" required="required"
+                    autocomplete="off" placeholder=" ">
+                <label class="form__label" for="password">*Password</label>
 
-            <input class="form__input" type="password" id="confirmPassword" name="confirmPassword" required="required"
-                autocomplete="off" placeholder=" ">
-            <label class="form__label" for="confirmPassword">*Confirm Password</label>
+                <input class="form__input" type="password" id="confirmPassword" name="confirmPassword"
+                    required="required" autocomplete="off" placeholder=" ">
+                <label class="form__label" for="confirmPassword">*Confirm Password</label>
 
-            <p class="required">
-                * These fields are required.
-            </p>
+                <p class="required">
+                    * These fields are required.
+                </p>
 
-            <input class="type-2" type="submit" value="Signup">
+                <input class="type-2" type="submit" value="Signup">
 
-            <a>Already a User ?</a>
-            <h5>
-                <a href="{% url 'LOGIN' %}">Go for Login</a>
-            </h5>
+                <a>Already a User ?</a>
+                <h5>
+                    <a href="{% url 'LOGIN' %}">Go for Login</a>
+                </h5>
 
-        </form>
+            </form>
+        </div>
+
     </div>
 
 
