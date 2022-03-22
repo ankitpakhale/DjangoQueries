@@ -56,7 +56,7 @@ ROOT_URLCONF = 'djq.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['G:/prgrms playground/Internships/Data Science/Django/DjangoQueries/DjangoQueries/authentication/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
