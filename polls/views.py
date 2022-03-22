@@ -5,6 +5,9 @@ from .models import *
 # Create your views here.
 
 def index(request):
+    return HttpResponse("Polls index page")
+
+def dataUpload(request):
     # To save data in Entry table in Linux
     a = 'queries1.csv'
     with open(a, 'r') as f:
