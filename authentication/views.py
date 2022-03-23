@@ -31,19 +31,22 @@ def signup(request):
                 # v.address = Address
                 v.password = Password
                 v.confirmPassword = ConfirmPassword
-                v.save()
+                v.save()    
+                messages.success(request, 'Signup Successfully Done')
+                # return render(request , 'login.html') 
                 return redirect('LOGIN')
             else:
-                msg = 'Please Enter Same Password'
-                return render(request , 'signup.html',{'msg':msg}) 
+                # msg = 'Please Enter Same Password'
+                # return render(request , 'signup.html',{'msg':msg}) 
+                messages.error(request, 'Please Enter Same Password')
         except(NameError):
             return render(request, '404-error-page.html')
         
         # except(TemplateDoesNotExist):
         #     return render(request, '404-error-page.html')
 
-        finally:
-            messages.success(request, 'Signup Successfully Done...')
+        # finally:
+        #     messages.success(request, 'Signup Successfully Done...')
     return render(request,'signup.html')
 
 def login(request):
