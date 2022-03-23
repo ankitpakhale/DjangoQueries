@@ -5,6 +5,7 @@ from .models import *
 # Create your views here.
 
 def signup(request):
+    messages.error(request, 'Welcome to Signup')
     if request.POST:
         Name = request.POST['name']
         Email = request.POST['email']
