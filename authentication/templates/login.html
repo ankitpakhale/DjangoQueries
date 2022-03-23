@@ -3,30 +3,43 @@
 {% block content %}
 
 
-{% for message in messages %}
+<!-- {% for message in messages %}
 <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
     <strong>Message:</strong> {{ message}}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-{% endfor %} 
+{% endfor %} -->
 
-<form method="POST">
-    {% csrf_token %}
 
-    <input type="text" name="email" placeholder="*Email" required="required">
+<div class="container">
+    <div class="main">
+        <p class="sign" align="center">Universal Login</p>
+        <form method="POST" class="verticalForm">
+            {% csrf_token %}
 
-    <input type="password" name="password" placeholder="*password" required="required">
+            <input class="form__input" id="email" type="text" name="email" required="required" autocomplete="off"
+                placeholder=" ">
+            <label class="form__label" for="email">*Email</label>
 
-    <p class="required">
-        * These fields are required.
-    </p>
-    <input class="btn btn-washla" type="submit" value="Login">
-    <a>Not a User ?<br></a>
-    <h5>
-        <a href="{% url 'SIGNUP' %}">Go for SignUp</a>
-    </h5>
+            <input class="form__input" type="password" id="password" name="password" required="required"
+                autocomplete="off" placeholder=" ">
+            <label class="form__label" for="password">*Password</label>
 
-</form>
+            <p class="required">
+                * These fields are required.
+            </p>
+
+            <input class="type-2" type="submit" value="Signup">
+
+            <p class="alreadyUser">Not a User ?</p>
+            <h5>
+                <a class="redirect" href="{% url 'SIGNUP' %}">Go for Signup</a>
+            </h5>
+
+        </form>
+    </div>
+
+</div>
 
 <!-- {% if msg %}
 <script>alert('{{msg}}')</script>

@@ -5,7 +5,7 @@ from .models import *
 # Create your views here.
 
 def signup(request):
-    messages.error(request, 'Welcome to Signup')
+    messages.info(request, 'Welcome to Signup')
     if request.POST:
         Name = request.POST['name']
         Email = request.POST['email']
@@ -22,8 +22,9 @@ def signup(request):
             # elif (len(Password) < 8):
             #     msg = "Password should be greater than 8 characters" 
             #     return render(request , 'signup.html',{'msg':msg}) 
-            
-            if (ConfirmPassword == Password) or (Number == 10):
+            if len(Name) < 0 or len(Email) < 0 or len(Number) < 0:
+                messages.error(request, "Please fill the form correctly")
+            elif (ConfirmPassword == Password) or (Number == 10):
                 v = userDetails()
                 v.name = Name
                 v.email = Email
@@ -34,7 +35,7 @@ def signup(request):
                 v.save()    
                 messages.success(request, 'Signup Successfully Done')
                 # return render(request , 'login.html') 
-                return redirect('LOGIN')
+                # return redirect('LOGIN')
             else:
                 # msg = 'Please Enter Same Password'
                 # return render(request , 'signup.html',{'msg':msg}) 
@@ -50,6 +51,7 @@ def signup(request):
     return render(request,'signup.html')
 
 def login(request):
+    messages.info(request, 'Welcome to Login')
     if request.POST:
         em = request.POST.get('email')
         pass1 = request.POST.get('password')
