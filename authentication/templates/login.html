@@ -16,13 +16,12 @@
         <form method="POST" class="verticalForm">
             {% csrf_token %}
 
-            <!-- required="required" -->
-            <input class="form__input" id="email" type="text" name="email"  autocomplete="off"
+            <input class="form__input" id="email" type="text" name="email" required="required" autocomplete="off"
                 placeholder=" ">
             <label class="form__label" for="email">*Email</label>
 
-            <!-- required="required" -->
-            <input class="form__input" type="password" id="password" name="password" autocomplete="off" placeholder=" ">
+            <input class="form__input" type="password" id="password" name="password" required="required"
+                autocomplete="off" placeholder=" ">
             <label class="form__label" for="password">*Password</label>
 
             <p class="required">

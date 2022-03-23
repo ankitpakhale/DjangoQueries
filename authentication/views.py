@@ -45,16 +45,11 @@ def signup(request):
     return render(request,'signup.html')
 
 def login(request):
-    print('0')
-    
     if request.method == 'POST':
-        print("1")
         em = request.POST['email']
         pass1 = request.POST['password']
         try:
-            print("2")
             if len(em) <= 0 or len(pass1) <= 0:
-                print("3")
                 messages.warning(request, 'Please fill all the given fields')
                 # msg = "Please fill all the given fields" 
                 # return render(request , 'login.html',{'msg':msg}) 
@@ -63,29 +58,22 @@ def login(request):
             check = userDetails.objects.get(email = em)
             # nav bar HEADER NAME PENDING
             if check.password == pass1:
-                print("4")
                 request.session['email'] = check.email
                 # nameMsg = userDetails.objects.all()
                 messages.success(request, 'Logged in properly')
                 return redirect('LOGIN')
                 # return render(request,'home.html', {'key':nameMsg})
             else:
-                print("5")
                 messages.error(request, 'Invalid Password')
                 return redirect('LOGIN')
                 # msg = 'Invalid Password'
                 # return render(request , 'login.html',{'msg':msg}) 
                 # return render(request , 'wrongPassword.html',{'msg':msg}) 
-            
         except(NameError):
-            print("6")
             return render(request, '404-error-page.html')
-       
         # except(TemplateDoesNotExist):
         #     return render(request, '404-error-page.html')
-        
         except:
-            print("7")
             msg = 'Invalid Email ID'
             # return render(request,'wrongPassword.html', {'msg':msg})
             messages.error(request, 'Invalid Email ID')
