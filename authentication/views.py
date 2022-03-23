@@ -5,12 +5,11 @@ from .models import *
 # Create your views here.
 
 def signup(request):
-    messages.info(request, 'Welcome to Signup')
     if request.POST:
         Name = request.POST['name']
         Email = request.POST['email']
         Number = request.POST['number']
-        # Address = request.POST.get('address')
+        Address = request.POST['address']
         Password = request.POST['password']
         ConfirmPassword = request.POST['confirmPassword']
         print(len(Password) + len(ConfirmPassword),'vsdvd')
@@ -22,16 +21,11 @@ def signup(request):
             # elif (len(Password) < 8):
             #     msg = "Password should be greater than 8 characters" 
             #     return render(request , 'signup.html',{'msg':msg}) 
-            if len(Name) < 0 or len(Email) < 0 or len(Number) < 0:
+            if len(Name) <= 0 or len(Email) <= 0 or len(Number) <= 0:
                 messages.error(request, "Please fill the form correctly")
-            elif (ConfirmPassword == Password) or (Number == 10):
-                v = userDetails()
-                v.name = Name
-                v.email = Email
-                v.number = Number
-                # v.address = Address
-                v.password = Password
-                v.confirmPassword = ConfirmPassword
+                
+            elif (ConfirmPassword == Password) and (len(Number) == 10):
+                v = userDetails(name = Name, email = Email, number = Number, address = Address, password = Password)
                 v.save()    
                 messages.success(request, 'Signup Successfully Done')
                 # return render(request , 'login.html') 
@@ -39,7 +33,7 @@ def signup(request):
             else:
                 # msg = 'Please Enter Same Password'
                 # return render(request , 'signup.html',{'msg':msg}) 
-                messages.error(request, 'Please Enter Same Password')
+                messages.error(request, 'Please fill the form correctly')
         except(NameError):
             return render(request, '404-error-page.html')
         
@@ -51,40 +45,49 @@ def signup(request):
     return render(request,'signup.html')
 
 def login(request):
-    messages.info(request, 'Welcome to Login')
-    if request.POST:
-        em = request.POST.get('email')
-        pass1 = request.POST.get('password')
-        
+    print('0')
+    
+    if request.method == 'POST':
+        print("1")
+        em = request.POST['email']
+        pass1 = request.POST['password']
         try:
-            check = userDetails.objects.get(email = em)
-            
-            if (em == "" or pass1 == ""):
-                msg = "Please fill all the given fields" 
-                return render(request , 'login.html',{'msg':msg}) 
-            
-            # nav bar HEADER NAME PENDING
-            elif check.password == pass1:
-                request.session['email'] = check.email
-                nameMsg = userDetails.objects.all()
-                return HttpResponse("Logged in properly")
-                # return redirect('HOME')
-                # return render(request,'home.html', {'key':nameMsg})
+            print("2")
+            if len(em) <= 0 or len(pass1) <= 0:
+                print("3")
+                messages.warning(request, 'Please fill all the given fields')
+                # msg = "Please fill all the given fields" 
+                # return render(request , 'login.html',{'msg':msg}) 
+                return redirect('LOGIN')
 
+            check = userDetails.objects.get(email = em)
+            # nav bar HEADER NAME PENDING
+            if check.password == pass1:
+                print("4")
+                request.session['email'] = check.email
+                # nameMsg = userDetails.objects.all()
+                messages.success(request, 'Logged in properly')
+                return redirect('LOGIN')
+                # return render(request,'home.html', {'key':nameMsg})
             else:
-                msg = 'Invalid Password'
+                print("5")
+                messages.error(request, 'Invalid Password')
+                return redirect('LOGIN')
+                # msg = 'Invalid Password'
+                # return render(request , 'login.html',{'msg':msg}) 
                 # return render(request , 'wrongPassword.html',{'msg':msg}) 
-                return render(request , 'login.html',{'msg':msg}) 
             
         except(NameError):
+            print("6")
             return render(request, '404-error-page.html')
        
         # except(TemplateDoesNotExist):
         #     return render(request, '404-error-page.html')
         
         except:
+            print("7")
             msg = 'Invalid Email ID'
             # return render(request,'wrongPassword.html', {'msg':msg})
-            return render(request,'login.html', {'msg':msg})
-
+            messages.error(request, 'Invalid Email ID')
+            return redirect('LOGIN')
     return render(request,'login.html')

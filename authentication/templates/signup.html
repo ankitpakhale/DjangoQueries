@@ -2,12 +2,19 @@
 {% load static %}
 {% block content %}
 
-<!-- {% for message in messages %}
+{% for message in messages %}
 <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
     <strong>Message:</strong> {{ message}}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-{% endfor %}  -->
+
+
+<!-- After successfully sign up -->
+<!-- <div class="alert alert-{{ message.tags }}" role="alert">
+    {{ message}}. Please <a href="{% url 'LOGIN' %}" class="alert-link">Login</a> from here.
+</div> -->
+
+{% endfor %}
 
 
 <div class="container">
