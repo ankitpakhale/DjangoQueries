@@ -36,10 +36,11 @@ def signup(request):
                 messages.error(request, 'Please fill the form correctly')
         except(NameError):
             return render(request, '404-error-page.html')
-        
+
         # except(TemplateDoesNotExist):
         #     return render(request, '404-error-page.html')
 
+        
         # finally:
         #     messages.success(request, 'Signup Successfully Done...')
     return render(request,'signup.html')
