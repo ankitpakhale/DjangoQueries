@@ -13,6 +13,7 @@ def signup(request):
         Password = request.POST['password']
         ConfirmPassword = request.POST['confirmPassword']
         print(len(Password) + len(ConfirmPassword),'vsdvd')
+        
         try:
             # if (len(Number) > 10) or (len(Number) < 10) :
             #     msg = "Phone number should be equal to 10 characters" 
