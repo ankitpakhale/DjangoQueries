@@ -13,6 +13,7 @@ def signup(request):
         Password = request.POST['password']
         ConfirmPassword = request.POST['confirmPassword']
         print(len(Password) + len(ConfirmPassword),'vsdvd')
+        
         try:
             # if (len(Number) > 10) or (len(Number) < 10) :
             #     msg = "Phone number should be equal to 10 characters" 
@@ -36,10 +37,11 @@ def signup(request):
                 messages.error(request, 'Please fill the form correctly')
         except(NameError):
             return render(request, '404-error-page.html')
-        
+
         # except(TemplateDoesNotExist):
         #     return render(request, '404-error-page.html')
 
+        
         # finally:
         #     messages.success(request, 'Signup Successfully Done...')
     return render(request,'signup.html')
