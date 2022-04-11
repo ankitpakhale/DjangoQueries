@@ -6,7 +6,8 @@ from .models import *
 
 def index(request):
     return HttpResponse("Polls index page")
-s
+
+
 def dataUpload(request):
     # To save data in Entry table in Linux
     a = 'queries1.csv'
